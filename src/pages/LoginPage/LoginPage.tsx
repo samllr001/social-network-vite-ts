@@ -1,35 +1,45 @@
+import { Controller, useForm } from "react-hook-form";
+import AppButton from "../../components/UI/AppButton/AppButton";
+import AppLink from "../../components/UI/AppLink/AppLink";
+import AppInput from "../../components/UI/AppInput/AppInput";
+import AppRegistration from "../../components/UI/AppRegistration/AppRegistration"
 import "./LoginPage.scss";
+import { SCLoginPage } from "./LoginPage.style";
+import { yupResolver } from "@hookform/resolvers/yup";
+import AppInput from "../../components/UI/AppInput/AppInput";
+
+
+const LoginFormSchema = yup.object({
+  usermail: yup.string().email().required("Обязатльное поле!"),
+  userpassword: yup
+  .string()
+  .min(4, "Пароль должен содержать как минимум 4 символа!")
+  .required("Обязательное поле!"),
+})
+
+const {control,handleSubmit}= useForm({
+  resolver: yupResolver(LoginFormSchema),
+  defaultValues:{
+    usermail:"",
+    userpassword:""
+  }
+})
 
 export const LoginPage = () => {
   return (
-    <div className="LoginPage">
+    <SCLoginPage className="LoginPage">
       <h1>Авторизация</h1>
       <form action="#">
-        <input type="tel" placeholder="Номер телефона" />
-        <input type="password" placeholder="Пароль" />
-        <button>Войти</button>
+        <Controller name="usermail" render={({ field })=>{
+      <AppInput inputType="email" inputPlaceholder="Введите свой email" {...field}/>
+        }}/>
+        
+        <AppInput inputType="password" inputPlaceholder="Пароль" />
+        <AppButton buttonText="Войти" buttonType="submit" isDisabled={false}/>
       </form>
-      <a href="#">Забыли пароль?</a>
-      <div className="registration">
-        <span>
-          У вас нет аккаунта? <a href="#">Зарегистрироваться</a>
-        </span>
-        <p>Войти с помощью</p>
-        <div className="icons-wrapper">
-          <a className="reg__link google-link" href="#">
-            <img src="./img/icons/google.svg" alt="Google" />
-          </a>
-          <a className="reg__link google-plus-link" href="#">
-            <img src="./img/icons/google-plus.svg" alt="Google Plus" />
-          </a>
-          <a className="reg__link yandex-link" href="#">
-            <img src="./img/icons/yandex.svg" alt="Yandex" />
-          </a>
-          <a className="reg__link mail-ru-link" href="#">
-            <img src="./img/icons/mail-ru.svg" alt="Mail.ru" />
-          </a>
-        </div>
-      </div>
-    </div>
+      <AppLink linkText="Забыли пароль?"/>
+      <AppRegistration/>
+    </SCLoginPage>
+    
   );
 };
