@@ -4,6 +4,7 @@ import { MainPage } from './pages/MainPage/MainPage.tsx';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage.tsx';
 
 
+
 function App() {
 
   const router = createBrowserRouter([
@@ -12,13 +13,17 @@ function App() {
      element: <LoginPage/>
   },
     {
-     path:"/login-page",
+     path:"/main-page",
      element: <MainPage/>
   },
     {
      path:"/profile-page",
      element: <ProfilePage/>
   },
+//   {
+//     path:"/registration-page",
+//     element: <RegistrationPage/>
+//  },
   ])
   
   return (
