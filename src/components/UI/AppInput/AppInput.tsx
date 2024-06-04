@@ -1,7 +1,7 @@
 import { ErrorMessage, SCAppInput} from "./AppInput.style";
 
 interface TOAppInput extends React.InputHTMLAttributes<HTMLInputElement> {
-    inputType: "password" | "email" | "text"
+    inputType: "password" | "email" | "text" | "name" | "user_city" | "phone_number" ;
     inputPlaceholder: string;
     isError: boolean;
     errorText?: string;

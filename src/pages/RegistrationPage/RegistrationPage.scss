@@ -1,115 +1,59 @@
-// *{
-//     padding: 0;
-//     margin: 0;
+// .LoginPage {
+//   max-width: 400px;
+//   margin: 0 auto;
+//   padding: 20px;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+//   background-color: #f9f9f9;
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//   text-align: center;
 // }
 
-// .header {
-//     background-color:#FFFFFF;
-//     color: #df4d4d;
-//     padding: 20px;
-//     text-align: center;
-//     box-shadow: 0px 0px 16px 0px #1013240A;
-//     width: 490px;
-//     height: 682px;
-//     display: flex;
-//     flex-wrap: wrap;
-//     flex-direction: column;
-//     justify-content: center;
-//     position: absolute;
-//     left: 35%;
-//     top: 10%;
+// .LoginPage h1 {
+//   font-size: 24px;
+//   margin-bottom: 20px;
+// }
 
-//     h1{
-//         font-size: 35px;
-//         font-weight: 600;
-//         margin-bottom: 20px;
-//         font-family: Arial, Helvetica, sans-serif;
-//         color: black;
-//     }
-//     form {
-//         display: flex;
-//         flex-wrap: wrap;
-//         flex-direction: column;
-//         justify-content: center;
+// .LoginPage form {
+//   display: flex;
+//   flex-direction: column;
+// }
 
-//         input {
-//             width: 400px;
-//             height: 40px;
-//             margin-bottom: 20px;
-//             padding: 10px;
-//             border-radius: 15px;
-//             border: 2.5px solid #1013240A;
-//             font-family: Arial, Helvetica, sans-serif;
-//             font-size: 15px;
-//             color: #1013240A;
+// .LoginPage form .AppInput {
+//   margin-bottom: 15px;
+// }
 
-//         }
+// .LoginPage form .AppButton {
+//   margin-top: 20px;
+// }
 
-//         button {
-//             width: 400px;
-//             height: 50px;
-//             margin-bottom: 20px;
-//             padding: 10px;
-//             border-radius: 15px;
-//             border: 1px solid #1013240A;
-//             font-family: Arial, Helvetica, sans-serif;
-//             font-size: 15px;
-//             color: #1013240A;
-//             background-color: #C1C6D3;
-//             font-size: 23px;
-//             color: #FFFFFF;
-//             display: flex;
-//             justify-content: center;
-//             align-items: center;
-//         }
-//     }
 
-//     .forgetPass{
-//         display: flex;
-//         flex-wrap: wrap;
-//         flex-direction: row;
-//         gap: 15px;
-//         align-items: center;
-//         justify-content: center;
-//         font-size: 16px;
-//         color: black;
-//         font-family: Arial, Helvetica, sans-serif;
-//         font-weight: 540;
-//         padding-bottom: 20px;
-//     }
+// .AppInput input {
+//   width: 100%;
+//   padding: 10px;
+//   font-size: 16px;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+//   box-sizing: border-box;
+// }
 
-//     .findAcc {
-//         display: flex;
-//         flex-wrap: wrap;
-//         flex-direction: row;
-//         gap: 15px;
-//         align-items: center;
-//         justify-content: center;
-//         font-size: 16px;
-//         color: black;
-//         font-family: Arial, Helvetica, sans-serif;
-//         font-weight: 540;
+// .AppButton button {
+//   width: 100%;
+//   padding: 12px;
+//   font-size: 16px;
+//   color: #fff;
+//   background-color: #007bff;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease;
+// }
 
-//         a{
-//             text-decoration: none;
-//             color: #526ED3;
-//         }
-//     }
+// .AppButton button:hover {
+//   background-color: #0056b3;
+// }
 
-//     .openWith{
-//         display: flex;
-//         flex-wrap: wrap;
-//         flex-direction: row;
-//         gap: 15px;
-//         align-items: center;
-//         justify-content: center;
-//         font-size: 16px;
-//         color: black;
-//         font-family: Arial, Helvetica, sans-serif;
-//         font-weight: 540;
-//         padding-top: 20px;
-//     }
-
-    
-
+// .AppButton button:disabled {
+//   background-color: #ccc;
+//   cursor: not-allowed;
 // }
