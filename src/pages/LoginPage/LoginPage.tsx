@@ -10,14 +10,20 @@ import {useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useLoginUserMutation } from "../../store/Api/authApi";
+import { useEffect } from "react";
+
+
 
 
 export const LoginPage = () => {
+  const [loginUser, {data:userData}]= useLoginUserMutation()
+
   const loginFormSchema = yup.object({
     useremail: yup
     .string()
     .email()
-    .required(),
+    .required("Обязательное поле!"),
     userpassword: yup
     .string()
     .min(4,"Пароль должен содержать как минимум 4 символа")
@@ -32,10 +38,9 @@ export const LoginPage = () => {
   }
 
   const onLoginSubmit = (data: ILoginForm) => {
+    loginUser({email: data.useremail, password: data.userpassword})
     console.log(data);
-    if (data) {
-      navigate("/main-page")
-    }
+    
   }
 
   const {
@@ -45,10 +50,18 @@ export const LoginPage = () => {
   } = useForm({
     defaultValues: {
       useremail:"",
-      userpassword:""
+      userpassword:"",
     },
-    resolver: yupResolver(loginFormSchema)
+    resolver: yupResolver(loginFormSchema),
   });
+
+  useEffect(()=>{
+    if (userData?.user_id){
+      navigate("/profile-page")
+    }
+    console.log(userData);
+
+  },[userData,navigate])
   
   return (
     <SCLoginPage className="LoginPage">

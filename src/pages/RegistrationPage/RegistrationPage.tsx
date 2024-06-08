@@ -5,10 +5,15 @@ import { SCRegPage } from "./RegistrationPage.style";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useLoginUserMutation } from "../../store/Api/authApi";
+import { useEffect } from "react";
 
 
 
 export const RegPage = () => {
+    
+  const [loginUser, {data:userData}]= useLoginUserMutation()
+
     const registrationFormSchema = yup.object({
       useremail: yup
       .string()
@@ -19,7 +24,7 @@ export const RegPage = () => {
       .min(2, "Имя должно соблюдать минимум 2 символа")
       .max(20, "Имя пользователя не должно превышать 20 символов")
       .matches(/^[A-Za-zА-Яа-яЁё]+$/, "Имя может содержать только буквы")
-      .required("Обазательное поле!"),
+      .required("Обязательное поле!"),
       userpassword: yup
       .string()
       .min(4, "Пароль должен содержать  как минимум 4 символа!")
@@ -38,6 +43,7 @@ export const RegPage = () => {
     });
   
     const navigate = useNavigate()
+      
       interface IRegistrationForm {
         useremail:string,
           userpassword:string,
@@ -46,10 +52,9 @@ export const RegPage = () => {
           user_city:string,
       }
       const onRegistrationSubmit = (data:IRegistrationForm ) =>{
+        loginUser({email: data.useremail, password: data.userpassword})
         console.log(data);
-        if(data){
-          navigate("/")
-        }
+       
       }
   
       const {
@@ -66,6 +71,14 @@ export const RegPage = () => {
          },
          resolver:yupResolver(registrationFormSchema),
      });
+        useEffect(()=>{
+         if (userData?.user_id){
+        navigate("/profile-page")
+        }
+      console.log(userData);
+  
+        },[userData,navigate])
+
     return (
       <SCRegPage>
         <h1>Регистрация</h1>
