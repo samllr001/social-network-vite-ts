@@ -1,5 +1,3 @@
-
-
 export const color = {
     bgc: "#f6f6f6",
     elemsBgc: "#fff",
